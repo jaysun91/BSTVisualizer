@@ -1,9 +1,9 @@
 #ifndef BST_H
 #define BST_H
 #include <iostream>
-#include <qgraphicsview>
-#include <qtextstream>
-#include <qprocess>
+#include <QGraphicsView>
+#include <QTextStream>
+#include <QProcess>
 
 using namespace std;
 

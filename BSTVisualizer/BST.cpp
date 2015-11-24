@@ -1,4 +1,4 @@
-#include "bst.h"
+#include "BST.h"
 
 void BST::init(QGraphicsScene* scene, QGraphicsView* view){
     this->_root = NULL;

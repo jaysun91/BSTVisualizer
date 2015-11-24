@@ -3,11 +3,13 @@ TARGET = BSTVisualizer
 TEMPLATE = app
 
 SOURCES += main.cpp \
-    bst.cpp
+    BST.cpp
 
 HEADERS  += \
+    BST.h \
     BST.h
 
 FORMS    +=
 
 CONFIG += console
+INCLUDEPATH += $$PWD/../qtsingleapplication-2.6-opensource/src/
