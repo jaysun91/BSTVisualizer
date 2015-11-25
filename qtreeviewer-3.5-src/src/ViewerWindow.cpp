@@ -56,13 +56,6 @@ void ViewerWindow::createActions() {
     deleteSelectedAction->setEnabled(false);
     connect(deleteSelectedAction, SIGNAL(triggered()), this, SLOT(deleteSelected()));
 
-    deleteSelectedAction = new QAction(tr("&Delete"), this);
-    deleteSelectedAction->setIcon(QIcon(":/img/deleteselected.png"));
-    deleteSelectedAction->setShortcut(tr("Del"));
-    deleteSelectedAction->setToolTip(tr("Delete selected values"));
-    deleteSelectedAction->setEnabled(false);
-    connect(deleteSelectedAction, SIGNAL(triggered()), this, SLOT(deleteSelected()));
-
     valueByIndexAction = new QAction(tr("Value by index"), this);
     valueByIndexAction->setIcon(QIcon(":/img/index.png"));
     valueByIndexAction->setEnabled(false);
@@ -91,6 +84,7 @@ void ViewerWindow::createActions() {
     connect(zoomInAction, SIGNAL(triggered()), m_view, SLOT(zoomIn()));
 
     zoomNormalAction = new QAction(tr("Zoom 100%"), this);
+    zoomNormalAction->setIcon(QIcon(":/img/zoomin.png"));
     zoomNormalAction->setShortcut(tr("Ctrl+0"));
     zoomNormalAction->setToolTip(tr("Zoom 100%"));
     connect(zoomNormalAction, SIGNAL(triggered()), m_view, SLOT(zoomNormal()));
@@ -135,6 +129,7 @@ void ViewerWindow::createToolbars() {
     viewToolbar = addToolBar(tr("Zoom"));
     viewToolbar->addAction(zoomInAction);
     viewToolbar->addAction(zoomOutAction);
+    viewToolbar->addAction(zoomNormalAction);
     viewToolbar->addSeparator();
     viewToolbar->addAction(handCursorAction);
     viewToolbar->addAction(arrowCursorAction);
