@@ -24,7 +24,7 @@ ViewerWindow::ViewerWindow() {
     errorMessageDialog = new QErrorMessage(this);
 
     setCentralWidget(m_view);
-    setWindowTitle(tr("Tree Viewer"));
+    setWindowTitle(tr("CS2024 Project: BST Visualizer"));
     setWindowIcon(QIcon(":/img/icon.png"));
     connect(m_tree->scene(), SIGNAL(selectionChanged()), this, SLOT(updateActions()));
     connect(m_tree, SIGNAL(treeChanged()), this, SLOT(updateActions()));
