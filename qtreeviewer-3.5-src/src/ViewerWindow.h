@@ -10,6 +10,7 @@ class QErrorMessage;
 class QLabel;
 class QActionGroup;
 class AddValuesWidget;
+class SearchValuesWidget;
 
 class ViewerWindow: public QMainWindow {
     Q_OBJECT
@@ -39,6 +40,7 @@ private:
     void createToolbars();
     void createMenus();
     void createStatusbar();
+    void delay();
 
     QToolBar *editToolbar;
     QToolBar *toolsToolbar;
@@ -59,6 +61,7 @@ private:
     QLabel *sizeLabel;
     QLabel *zoomLabel;
     AddValuesWidget *addValuesWidget;
+    SearchValuesWidget *searchValuesWidget;
 
     TreeManager* m_tree;
     TreeView *m_view;

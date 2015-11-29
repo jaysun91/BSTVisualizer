@@ -245,3 +245,10 @@ void ViewerWindow::valueByIndexSlot(int index) {
     if (dialog)
         dialog->setValue(m_tree->valueByIndex(index));
 }
+
+void ViewerWindow::delay() {
+    QTime dieTime = QTime::currentTime().addSecs(1);
+    while (QTime::currentTime() < dieTime) {
+        QCoreApplication::processEvents(QEventLoop::AllEvents, 100);
+    }
+}

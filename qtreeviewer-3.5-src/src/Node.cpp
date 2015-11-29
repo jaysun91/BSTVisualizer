@@ -14,18 +14,22 @@ Node::Node(int value) {
     m_value = value;
     m_parentEdge = new Edge(this, this);
     m_leftChild = m_rightChild = 0;
+    // initialize the size of the subtree to be 1.
     m_subTreeSize = 1;
 
+    // code for setting the view
     m_textColor.setRgb(0x744f0e);
     m_outlineColor.setRgb(0x65502c);
     m_backColor.setRgb(0xffdda2);
     m_backGradient.setStart(QPointF(0, -10));
     m_backGradient.setFinalStop(QPointF(0, 30));
-    m_backGradient.setColorAt(0, QColor(0xffebc8));
-    m_backGradient.setColorAt(1, QColor(0xdaa64b));
+    m_backGradient.setColorAt(0, QColor(0xf0f8ff));
+    m_backGradient.setColorAt(1, QColor(0x4c787e));
 
-    setFlags(ItemIsMovable | ItemIsSelectable);
+    // currently we don't want the node to be moveable
+    setFlags(ItemIsSelectable);
     setAcceptHoverEvents(true);
+
 
     m_hover = false;
 
@@ -80,6 +84,8 @@ Node* Node::rightChild() const {
     return m_rightChild;
 }
 
+
+// Setting the parent with a specified node.
 void Node::setParent(Node *node) {
     if (parent() == node)
         return;
@@ -91,15 +97,21 @@ void Node::setParent(Node *node) {
         m_parentEdge = new Edge(node, this);
     }
 }
+
 void Node::setLeftChild(Node *node) {
+    // check if the node is alreay the left child
     if (m_leftChild == node)
         return;
+    // if the left child exists and is not the node
     if (m_leftChild)
         m_leftChild->removeParent();
     m_leftChild = node;
+    // if the new left child is not 0, we should set it's parent
     if (m_leftChild)
         m_leftChild->setParent(this);
 }
+
+// same as set left child
 void Node::setRightChild(Node *node) {
     if (m_rightChild == node)
         return;
@@ -110,16 +122,23 @@ void Node::setRightChild(Node *node) {
         m_rightChild->setParent(this);
 }
 
+
+// remove the parent by simply set the from
+// node of the parent edge to be 0.
 void Node::removeParent() {
     if (m_parentEdge)
         m_parentEdge->setFromNode(0);
 }
+
+// similar with remove parent
 void Node::removeChild(Node *node) {
     if (m_leftChild == node)
         m_leftChild = 0;
     if (m_rightChild == node)
         m_rightChild = 0;
 }
+
+
 void Node::removeParentEdge() {
     if (m_parentEdge) {
         if (parent())
@@ -179,7 +198,7 @@ QRectF Node::outlineRect() const {
 }
 
 int Node::roundness(double size) const {
-    const int Diameter = 12;
+    const int Diameter = 20;
     return 100 * Diameter / int(size);
 }
 
@@ -250,6 +269,8 @@ qreal Node::normalHeight() {
 void Node::hoverEnterEvent(QGraphicsSceneHoverEvent *event) {
    // scale(hoverScaleFactor, hoverScaleFactor);
     m_hover = true;
+    QString s = QString::number(subTreeSize());
+    setToolTip("Subtree Size: " + s);
     QGraphicsItem::hoverEnterEvent(event);
 
     /*

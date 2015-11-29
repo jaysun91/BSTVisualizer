@@ -25,7 +25,8 @@ HEADERS += src/ValueByIndexDialog.h \
     src/TreeManager.h \
     src/TreeScene.h \
     src/TreeView.h \
-    src/ViewerWindow.h
+    src/ViewerWindow.h \
+    src/SearchValuesWidget.h
 SOURCES += src/ValueByIndexDialog.cpp \
     src/AddValuesWidget.cpp \
     src/AddValuesDialog.cpp \
@@ -35,7 +36,8 @@ SOURCES += src/ValueByIndexDialog.cpp \
     src/TreeScene.cpp \
     src/TreeView.cpp \
     src/ViewerWindow.cpp \
-    src/main.cpp
+    src/main.cpp \
+    src/SearchValuesWidget.cpp
 FORMS += ui/valuebyindexdialog.ui \
     ui/addvaluesdialog.ui
 
