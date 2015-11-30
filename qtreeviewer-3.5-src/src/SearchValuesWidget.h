@@ -1,7 +1,6 @@
 #ifndef SEARCHVALUESWIDGET
 #define SEARCHVALUESWIDGET
 
-
 #include <QLineEdit>
 #include <QList>
 

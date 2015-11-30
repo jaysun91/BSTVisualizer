@@ -1,6 +1,5 @@
 #ifndef TREEMANAGER_H_
 #define TREEMANAGER_H_
-
 #include <QObject>
 
 class TreeScene;
@@ -17,6 +16,11 @@ public:
     void rotateSelectedLeft();
     void rotateSelectedRigth();
     int valueByIndex(int index);
+    QVector<Node *> preOrderTraverse(Node* root);
+    QVector<Node *> inOrderTraverse(Node* root);
+    QVector<Node *> postOrderTraverse(Node* root);
+
+
 
     int treeSize();
     bool isEmpty();
@@ -25,6 +29,9 @@ public:
 private slots:
     void updateScene();
     void updateSceneRect();
+    void preHelper(Node *root, QVector<Node *> res);
+    void inHelper(Node *root, QVector<Node *> res);
+    void postHelper(Node *root, QVector<Node *> res);
 
 signals:
     void treeChanged();
