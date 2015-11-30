@@ -49,6 +49,13 @@ void ViewerWindow::createActions() {
     removeValueAction->setToolTip(tr("Remove value from the tree"));
     connect(removeValueAction, SIGNAL(triggered()), this, SLOT(removeValue()));
 
+    // new add by Jiayi
+    searchValueForIndexAction = new QAction(tr("&Search Value"), this);
+    searchValueForIndexAction->setIcon(QIcon(":/img/removevalue.png"));
+    searchValueForIndexAction->setShortcut(tr("Ctrl+S"));
+    searchValueForIndexAction->setToolTip(tr("Search value from the tree"));
+    connect(searchValueForIndexAction, SIGNAL(triggered()), this, SLOT(searchValueForIndex()));
+
     deleteSelectedAction = new QAction(tr("&Delete"), this);
     deleteSelectedAction->setIcon(QIcon(":/img/deleteselected.png"));
     deleteSelectedAction->setShortcut(tr("Del"));
@@ -119,6 +126,7 @@ void ViewerWindow::createToolbars() {
     editToolbar = addToolBar(tr("Edit"));
     editToolbar->addAction(addValueAction);
     editToolbar->addAction(removeValueAction);
+    editToolbar->addAction(searchValueForIndexAction);
     editToolbar->addAction(deleteSelectedAction);
 
     toolsToolbar = addToolBar(tr("Tools"));
@@ -206,6 +214,17 @@ void ViewerWindow::removeValue() {
     ok = m_tree->removeValue(value);
     if (!ok) errorMessageDialog->showMessage(
                                  tr("There is no such value in the tree."));
+}
+// edit by Jiayi
+void ViewerWindow::searchValueForIndex() {
+    QString ss;
+    bool ok;
+    int value = QInputDialog::getInt(this, tr("Search value"),
+                                     tr("Enter value:"),
+                                     0, -2147483647, 2147483647, 1, &ok);
+    if (!ok) return;
+    ss = m_tree->searchValueForIndex(value);
+    if(ok) errorMessageDialog->showMessage(ss);
 }
 
 void ViewerWindow::deleteSelected() {

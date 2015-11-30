@@ -22,6 +22,8 @@ public slots:
     void addValue();
     void addValuesFromWidget();
     void removeValue();
+    // new add by jiayi
+    void searchValueForIndex();
     void deleteSelected();
     void rotateLeft();
     void rotateRight();
@@ -47,6 +49,8 @@ private:
     QToolBar *viewToolbar;
     QAction *addValueAction;
     QAction *removeValueAction;
+    // new add by jiayi
+    QAction *searchValueForIndexAction;
     QAction *deleteSelectedAction;
     QAction *valueByIndexAction;
     QAction *leftNodeRotationAction;

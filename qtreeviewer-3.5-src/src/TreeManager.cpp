@@ -4,6 +4,8 @@
 #include "Node.h"
 #include "Edge.h"
 #include <QDebug>
+#include <QVector>
+#include <QString>
 
 TreeManager::TreeManager() {
     const int defaultSceneWidth = 700;
@@ -84,6 +86,22 @@ bool TreeManager::removeValue(int value) {
         return true;
     } else
         return false;
+}
+QString TreeManager::searchValueForIndex(int value) {
+    QString s;
+
+    Node *node = searchValue(value);
+    if (node) {
+
+        QString p = node->parent() ?  QString::number(node->parent()->value()) :"Null";
+        QString l = node->leftChild()?  QString::number(node->leftChild()->value()):"Null";
+        QString r = node->rightChild() ? QString::number(node->rightChild()->value()):"Null";
+
+        s = "Parent Node: " + p  + "\n" + " LeftChild: " + l + "\n" + "RightChild: " + r + ".";
+    	return s;
+    } else {
+        return s.append("Node does not exist!");
+    }
 }
 
 bool TreeManager::deleteSelected() {
@@ -361,42 +379,42 @@ int TreeManager::valueByIndexDFS(Node *node, int index) {
         return valueByIndexDFS(node->rightChild(), index - nodeIndex);
     return node->value();
 }
-// implement traversals
-QVector<Node *> TreeManager::preOrderTraverse(Node * root){
-    QVector<Node *> res;
-    preHelper(root, res);
-    return res;
-}
-void preHelper(Node *root, QVector<Node *> res) {
-    if (!root) return;
-    res.append(root);
-    if (root->leftChild()) preHelper(root->leftChild(), res);
-    if (root->rightChild()) preHelper(root->rightChild(), res);
-}
 
-QVector<Node *> TreeManager::postOrderTraverse(Node * root){
-    QVector<Node *> res;
-    postHelper(root, res);
-    return res;
-}
-void postHelper(Node *root, QVector<Node *> res) {
-    if (!root) return;
-    if (root->leftChild()) postHelper(root->leftChild(), res);
-    if (root->rightChild()) postHelper(root->rightChild(), res);
-    res.append(root);
-}
+//QVector<Node *> TreeManager::preOrderTraverse(Node *root){
+//    QVector<Node *> res;
+//    preHelper(root, res);
+//    return res;
+//}
+//void preHelper(Node *root, QVector<Node *> res) {
+//    if (!root) return;
+//    res.append(root);
+//    if (root->leftChild()) preHelper(root->leftChild(), res);
+//    if (root->rightChild()) preHelper(root->rightChild(), res);
+//}
 
-QVector<Node *> TreeManager:: inOrderTraverse(Node * root){
-    QVector<Node *> res;
-    inHelper(root, res);
-    return res;
-}
-void inHelper(Node *root, QVector<Node *> res) {
-    if (!root) return;
-    if (root->leftChild()) inHelper(root->leftChild(), res);
-    res.append(root);
-    if (root->rightChild()) inHelper(root->rightChild(), res);
-}
+//QVector<Node *> TreeManager::postOrderTraverse(Node *root){
+//    QVector<Node *> res;
+//    postHelper(root, res);
+//    return res;
+//}
+//void postHelper(Node *root, QVector<Node *> res) {
+//    if (!root) return;
+//    if (root->leftChild()) postHelper(root->leftChild(), res);
+//    if (root->rightChild()) postHelper(root->rightChild(), res);
+//    res.append(root);
+//}
+
+//QVector<Node *> TreeManager:: inOrderTraverse(Node *root){
+//    QVector<Node *> res;
+//    inHelper(root, res);
+//    return res;
+//}
+//void inHelper(Node *root, QVector<Node *> res) {
+//    if (!root) return;
+//    if (root->leftChild()) inHelper(root->leftChild(), res);
+//    res.append(root);
+//    if (root->rightChild()) inHelper(root->rightChild(), res);
+//}
 
 
 

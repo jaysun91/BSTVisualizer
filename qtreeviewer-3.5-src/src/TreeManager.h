@@ -1,7 +1,8 @@
 #ifndef TREEMANAGER_H_
 #define TREEMANAGER_H_
 #include <QObject>
-
+#include <QVector>
+#include <QString>
 class TreeScene;
 class Node;
 
@@ -12,13 +13,15 @@ public:
 
     bool addValue(int value);
     bool removeValue(int value);
+    // add by Jiayi
+    QString searchValueForIndex(int value);
     bool deleteSelected();
     void rotateSelectedLeft();
     void rotateSelectedRigth();
     int valueByIndex(int index);
-    QVector<Node *> preOrderTraverse(Node* root);
-    QVector<Node *> inOrderTraverse(Node* root);
-    QVector<Node *> postOrderTraverse(Node* root);
+    QVector<Node *> preOrderTraverse(Node *root);
+    QVector<Node *> inOrderTraverse(Node *root);
+    QVector<Node *> postOrderTraverse(Node *root);
 
 
 
@@ -29,9 +32,7 @@ public:
 private slots:
     void updateScene();
     void updateSceneRect();
-    void preHelper(Node *root, QVector<Node *> res);
-    void inHelper(Node *root, QVector<Node *> res);
-    void postHelper(Node *root, QVector<Node *> res);
+
 
 signals:
     void treeChanged();
@@ -57,6 +58,9 @@ private:
     TreeScene *m_scene;
     Node *m_root;
     int m_treeSize;
+    void preHelper(Node *root, QVector<Node *> res);
+    void inHelper(Node *root, QVector<Node *> res);
+    void postHelper(Node *root, QVector<Node *> res);
 };
 
 #endif /* TREEMANAGER_H */
