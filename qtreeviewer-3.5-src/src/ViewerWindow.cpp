@@ -51,7 +51,7 @@ void ViewerWindow::createActions() {
 
     // new add by Jiayi
     searchValueForIndexAction = new QAction(tr("&Search Value"), this);
-    searchValueForIndexAction->setIcon(QIcon(":/img/removevalue.png"));
+    searchValueForIndexAction->setIcon(QIcon(":/img/search.png"));
     searchValueForIndexAction->setShortcut(tr("Ctrl+S"));
     searchValueForIndexAction->setToolTip(tr("Search value from the tree"));
     connect(searchValueForIndexAction, SIGNAL(triggered()), this, SLOT(searchValueForIndex()));
@@ -91,7 +91,7 @@ void ViewerWindow::createActions() {
     connect(zoomInAction, SIGNAL(triggered()), m_view, SLOT(zoomIn()));
 
     zoomNormalAction = new QAction(tr("Zoom 100%"), this);
-    zoomNormalAction->setIcon(QIcon(":/img/zoomin.png"));
+    zoomNormalAction->setIcon(QIcon(":/zoomNormal.png"));
     zoomNormalAction->setShortcut(tr("Ctrl+0"));
     zoomNormalAction->setToolTip(tr("Zoom 100%"));
     connect(zoomNormalAction, SIGNAL(triggered()), m_view, SLOT(zoomNormal()));

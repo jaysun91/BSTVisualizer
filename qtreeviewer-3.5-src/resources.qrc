@@ -1,5 +1,5 @@
 <RCC>
-    <qresource prefix="/" >
+    <qresource prefix="/">
         <file>img/addvalue.png</file>
         <file>img/removevalue.png</file>
         <file>img/deleteselected.png</file>
@@ -12,5 +12,7 @@
         <file>img/rightrotation.png</file>
         <file>img/index.png</file>
         <file>img/nodeglow.png</file>
+        <file>img/search.png</file>
+        <file>zoomNormal.png</file>
     </qresource>
 </RCC>
