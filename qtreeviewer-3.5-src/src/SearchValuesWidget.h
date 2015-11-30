@@ -2,23 +2,21 @@
 #define SEARCHVALUESWIDGET
 
 
-
-
 #include <QLineEdit>
 #include <QList>
 
 class QToolButton;
 
-class AddValuesWidget : public QLineEdit {
+class SearchValuesWidget : public QLineEdit {
     Q_OBJECT
 public:
-    AddValuesWidget(QWidget *parent = 0);
-    AddValuesWidget(const QIcon &icon, QWidget *parent = 0);
+    SearchValuesWidget(QWidget *parent = 0);
+    SearchValuesWidget(const QIcon &icon, QWidget *parent = 0);
     QList<int> values();
 signals:
     void valuesListChanged();
 private slots:
-    void updateValuesList();
+    void searchValue();
 protected:
     void resizeEvent(QResizeEvent *event);
 private:
